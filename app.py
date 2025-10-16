@@ -2,13 +2,14 @@
 # app.py — PromptAligner main interface
 # ===========================
 
-# Run this file to launch the interface.
-# Gradio is used for simplicity, but Streamlit can be substituted easily.
+import sys, os
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 import gradio as gr
 from core.evaluator import compute_harmony_index
 from core.feedback_module import calc_cds
 from core.rewriter import refine_prompt
+
 
 def generate_image(prompt):
     """
@@ -16,6 +17,7 @@ def generate_image(prompt):
     You can later connect this to Stable Diffusion, SDXL, or any other model.
     """
     return f"Generated image based on prompt: {prompt}"
+
 
 def main_interface(prompt, feedback=None):
     """
